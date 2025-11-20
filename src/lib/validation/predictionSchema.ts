@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const predictionSchema = z.object({
-  hbA1c: z.preprocess((val) => Number(val), z.number().min(0).max(20)),
-  duration: z.preprocess((val) => Number(val), z.number().min(0)),
+  hbA1c: z.preprocess((val) => Number(val), z.number().min(2).max(20)),
+  duration: z.preprocess((val) => Number(val), z.number().min(2)),
   systolicBp: z.preprocess((val) => Number(val), z.number().min(50).max(300)),
   image: z
     .instanceof(FileList)
