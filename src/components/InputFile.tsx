@@ -25,7 +25,7 @@ const InputFile: React.FC<FileUploadProps> = ({ name, onFileSelect }) => {
   return (
     <div className="space-y-2">
       <label className="block text-[13px] font-medium text-gray-600">
-        Fundus Image
+        Fundus Retinal Image
       </label>
 
       <div className="relative group">
@@ -38,12 +38,8 @@ const InputFile: React.FC<FileUploadProps> = ({ name, onFileSelect }) => {
         />
 
         <div
-          className={`border-2 border-dashed rounded-xl p-8 text-center transition-all
-          ${
-            errors[name]
-              ? "border-red-300 bg-red-50"
-              : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
-          }
+          className={`border-2 border-dashed rounded-xl p-8 text-center border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all
+          ${errors[name] && "border-red-300"}
           bg-slate-50 h-64 flex flex-col items-center justify-center overflow-hidden relative`}
         >
           {previewUrl ? (
@@ -60,14 +56,12 @@ const InputFile: React.FC<FileUploadProps> = ({ name, onFileSelect }) => {
               <p className="text-sm font-medium text-gray-700">
                 Click or drag to upload
               </p>
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-gray-500 mt-1">
                 JPG or PNG (Max 10MB)
               </p>
             </>
           )}
         </div>
-
-        {/* RHF Error message */}
         {errors[name] && (
           <p className="text-red-500 text-xs mt-1">
             {String(errors[name]?.message ?? "")}

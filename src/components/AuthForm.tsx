@@ -6,10 +6,11 @@ import type { AuthSchema } from "../lib/validation/authSchema";
 import { authSchema } from "../lib/validation/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 const AuthForm = () => {
   const [signState, setSignState] = useState<"Sign In" | "Sign Up">("Sign In");
-
+  const navigate = useNavigate();
   const methods = useForm<AuthSchema>({
     resolver: zodResolver(authSchema),
     defaultValues: {
@@ -29,6 +30,7 @@ const AuthForm = () => {
 
   const onSubmit: SubmitHandler<AuthSchema> = (data) => {
     console.log(data);
+    navigate("/predictor");
   };
 
   return (

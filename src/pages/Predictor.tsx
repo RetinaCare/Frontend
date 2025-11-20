@@ -12,10 +12,11 @@ import InputFile from "../components/InputFile";
 import TextInput from "../components/TextInput";
 import PredictorResult from "../components/PredictionResult";
 import ChatBox from "../components/ChatBox";
+import { useNavigate } from "react-router";
 
 const Predictor = () => {
   const [result, setResult] = useState<PredictionResult | null>(null);
-
+  const navigate = useNavigate();
   const methods = useForm<PredictionFormInput>({
     resolver: zodResolver(predictionSchema),
     mode: "onSubmit",
@@ -26,6 +27,7 @@ const Predictor = () => {
     formState: { isSubmitting },
   } = methods;
 
+  const handleLogOut = () => navigate("/");
   const onSubmit: SubmitHandler<PredictionFormData> = async (data) => {
     console.log("Sending to AI:", data);
 
@@ -51,7 +53,10 @@ const Predictor = () => {
             RetinaCare
           </span>
         </div>
-        <button className="text-sm font-medium text-blue-500 hover:text-blue-600 transition-colors flex items-center gap-1">
+        <button
+          onClick={handleLogOut}
+          className="text-sm font-medium text-blue-500 hover:text-blue-600 transition-colors flex items-center gap-1"
+        >
           Sign Out <LogOut size={16} />
         </button>
       </header>
