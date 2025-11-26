@@ -23,7 +23,7 @@ const PasswordInput: FC<PasswordInputProps> = ({ label, name }) => {
         <input
           type={visible ? "text" : "password"}
           {...register(name)}
-          className="outline-0 text-gray-500 rounded-xl py-2 px-2 w-full bg-transparent"
+          className="outline-0 text-gray-600 rounded-xl py-1 px-2 w-full bg-transparent"
         />
         <button
           type="button"

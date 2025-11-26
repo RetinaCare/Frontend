@@ -3,7 +3,11 @@ import { z } from "zod";
 export const authSchema = z
   .object({
     signState: z.enum(["Sign In", "Sign Up"]),
-    fullname: z.string().optional(),
+    fullname: z
+      .string()
+      .min(5, "fullname must be at least 5 characters")
+      .max(50, "fullname must not exceed 50 characters")
+      .optional(),
     email: z.email("Invalid email address"),
     password: z.string().min(6, "Password must be at least 6 characters"),
     confirmPassword: z.string().optional(),

@@ -70,14 +70,14 @@ const AuthForm = () => {
   };
   return (
     <div className="flex items-center justify-center px-5 mx-auto w-full">
-      <div className="bg-white rounded-3xl max-w-md w-full px-8 py-6">
+      <div className="bg-white rounded-3xl max-w-md w-full px-8 py-5">
         <div className="flex items-center justify-center gap-2">
           <h2 className="text-3xl text-blue-700 tracking-tight font-semibold">
             RetinaCare
           </h2>
         </div>
 
-        <div className="text-center mb-4">
+        <div className="text-center mb-3">
           <h3 className="text-xl text-gray-800 font-medium">
             {signState === "Sign Up"
               ? "Create your Account"
@@ -89,7 +89,7 @@ const AuthForm = () => {
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="w-full space-y-3"
+            className="w-full space-y-2"
           >
             {signState === "Sign Up" ? (
               <TextInput
