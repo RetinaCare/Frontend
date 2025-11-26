@@ -29,7 +29,7 @@ const TextInput: FC<TextInputProps> = ({
           type={type}
           id={name}
           {...register(name)}
-          className="outline-0 text-gray-500 bg-transparent rounded-xl py-2 px-2 w-full"
+          className="outline-0 text-gray-600 bg-transparent rounded-xl py-1 px-2 w-full"
         />
         {icon && (
           <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-500">

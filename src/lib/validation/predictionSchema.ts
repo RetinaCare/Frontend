@@ -5,13 +5,18 @@ export const predictionSchema = z.object({
   duration: z.preprocess((val) => Number(val), z.number().min(2)),
   systolicBp: z.preprocess((val) => Number(val), z.number().min(50).max(300)),
   image: z
-    .instanceof(FileList)
-    .refine((files) => files.length === 1, "Retinal image is required.")
-    .refine((files) => files[0].size <= 10_000_000, "Max file size is 10MB.")
-    .refine(
-      (files) => ["image/png", "image/jpeg"].includes(files[0].type),
-      "Only PNG or JPEG images are allowed."
-    ),
+    .custom<FileList>((val) => val instanceof FileList, {
+      message: "Please upload a retinal image.",
+    })
+    .refine((files) => files.length === 1, {
+      message: "Retinal image is required.",
+    })
+    .refine((files) => files[0].size <= 10_000_000, {
+      message: "Max file size is 10MB.",
+    })
+    .refine((files) => ["image/png", "image/jpeg"].includes(files[0].type), {
+      message: "Only PNG or JPEG images are allowed.",
+    }),
 });
 
 // 1. INPUT TYPE: The raw data RHF receives (strings for numbers, any for FileList)

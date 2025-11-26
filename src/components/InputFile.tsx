@@ -24,7 +24,7 @@ const InputFile: React.FC<FileUploadProps> = ({ name, onFileSelect }) => {
 
   return (
     <div className="space-y-2">
-      <label className="block text-[13px] font-medium text-gray-600">
+      <label className="block text-sm font-medium text-gray-600">
         Fundus Retinal Image
       </label>
 
